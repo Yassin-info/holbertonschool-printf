@@ -9,14 +9,25 @@ int_printf(const char *format, ...)
     const char *c;
     va_list args;
 
-    if (format == NULL)
-    return (-1);
+    format_specifier_t specifiers[] = {
+		{'c', print_char},
+		{'s', print_string},
+		{'%', print_percent},
+		{'d', print_int},
+		{'i', print_int},
+		{'\0', NULL}
+	};
 
-    va_start(args, format);
+    for (c = format; *c != '\0'; c++)
+	{
+        if (format == NULL)
+        return (-1);
 
-    if (c = '%')
-    {
-        c++;
-        if (c = '\0')
+        va_start(args, format);
+
+        if (c == '%')
         {
-            return (-1);
+            c++;
+            if (c = '\0')
+            {
+                return (-1);
