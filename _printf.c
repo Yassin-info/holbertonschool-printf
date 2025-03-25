@@ -28,6 +28,56 @@ int_printf(const char *format, ...)
         if (c == '%')
         {
             c++;
-            if (c = '\0')
+            if (c == '\0')
             {
+                va_end(args);
                 return (-1);
+            }
+			count += handle_specifier(*p, args, specifiers);
+		}
+		else
+		{
+			count += _putchar(*p);
+		}
+	}
+	va_end(args);
+	return (count);
+}
+/**
+*
+*/
+int handle_specifier(char specifier, va_list args, format_specifier_t
+specifiers[])
+
+{
+	int i;
+
+	for (i = 0; specifiers[i].specifier != '\0'; i++)
+	{
+		if (specifiers[i].specifier == specifier)
+		{
+			return (specifiers[i].func(args));
+		}
+	}
+	return (_putchar('%') + _putchar(specifier));
+}
+/**
+*
+*/
+int print_string(va_list args)
+{
+	char *s = va_arg(args, char *);
+	int count = 0;
+
+	if (s == NULL)
+		s = "(null)";
+
+	while (*s)
+	{
+		count += _putchar(*s++);
+	}
+
+	return (count);
+}
+/** 
+*/
