@@ -69,7 +69,7 @@ int handle_specifier(char specifier, va_list args, format_specifier_t specifiers
 		}
     i++;
     }
-	return (specifiers[i].specifier);
+	return ('%');
 }
 /**
 *print_string - imprime une chaine sur la sortie standard
