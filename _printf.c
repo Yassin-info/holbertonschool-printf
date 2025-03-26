@@ -1,8 +1,13 @@
 #include "main.h"
+#include <stdio.h>
 /**
-* 
+* _printf - fonction printf personnalisé pour gerer
+*			specificateur de formats specifiques
+* @format: la chaine de caractere conteant les caracteres et specificateurs
+* @...: les valeurs a formater et a imprimer
+* Return: nombre de caracteres a imprimer 
 */
-int_printf(const char *format, ...)
+int _printf(const char *format, ...)
 {
     
     int count = 0;
@@ -25,26 +30,31 @@ int_printf(const char *format, ...)
 
         va_start(args, format);
 
-        if (c == '%')
+        if (*c == '%')
         {
             c++;
-            if (c == '\0')
+            if (*c == '\0')
             {
                 va_end(args);
                 return (-1);
             }
-			count += handle_specifier(*p, args, specifiers);
+			count += handle_specifier(*c, args, specifiers);
 		}
 		else
 		{
-			count += _putchar(*p);
+			count += _putchar(*c);
 		}
 	}
 	va_end(args);
 	return (count);
 }
 /**
-*
+*handle_specifier - traite le specificateur de format et
+*					apelle la foction approprier
+* @specifier: le caractere specificateur de format
+* @args: liste d'arguments
+* @specifiers: tableau des specificateurs
+* Return: nombre de caractere imprimer pour le specificateur
 */
 int handle_specifier(char specifier, va_list args, format_specifier_t
 specifiers[])
@@ -62,7 +72,9 @@ specifiers[])
 	return (_putchar('%') + _putchar(specifier));
 }
 /**
-*
+*print_string - imprime une chaine sur la sortie standard
+* @args: chaine a imprimer
+* Return: nombre de caractere a imprimer
 */
 int print_string(va_list args)
 {
@@ -80,4 +92,23 @@ int print_string(va_list args)
 	return (count);
 }
 /** 
+* print_percent - imprime %
+* @args: liste arguments
+* Return: toujours 1 (succes)
 */
+int print_percent(va_list args)
+{
+	(void)args;
+	return (_putchar('%'));
+}
+/**
+*print_char - imprime un caractère sur la sortie standard.
+* @args: Liste d'arguments contenant le caractère à imprimer.
+* Return: toujours 1 (succes).
+*/
+int print_char(va_list args)
+{
+	char c = va_arg(args, int);
+
+	return (_putchar(c));
+}
