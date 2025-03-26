@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
     
     int count = 0;
-    const char *c;
+    const char *c = NULL;
     va_list args;
 
     format_specifier_t specifiers[] = {
@@ -23,8 +23,8 @@ int _printf(const char *format, ...)
 		{'\0', NULL}
 	};
 
-    for (c = format; *c != '\0'; c++)
-	{
+	while (*c != '\0')
+    {
         if (format == NULL)
         return (-1);
 
@@ -38,13 +38,14 @@ int _printf(const char *format, ...)
                 va_end(args);
                 return (-1);
             }
-			count += handle_specifier(*c, args, specifiers);
+		count += handle_specifier(*c, args, specifiers);
 		}
 		else
 		{
 			count += _putchar(*c);
 		}
-	}
+        c++;
+    }
 	va_end(args);
 	return (count);
 }
@@ -56,20 +57,19 @@ int _printf(const char *format, ...)
 * @specifiers: tableau des specificateurs
 * Return: nombre de caractere imprimer pour le specificateur
 */
-int handle_specifier(char specifier, va_list args, format_specifier_t
-specifiers[])
-
+int handle_specifier(char specifier, va_list args, format_specifier_t specifiers[])
 {
-	int i;
+	int i = 0;
 
-	for (i = 0; specifiers[i].specifier != '\0'; i++)
-	{
+	while (specifiers[i].specifier != '\0')
+    {
 		if (specifiers[i].specifier == specifier)
 		{
 			return (specifiers[i].func(args));
 		}
-	}
-	return (_putchar('%') + _putchar(specifier));
+    i++;
+    }
+	return (i);
 }
 /**
 *print_string - imprime une chaine sur la sortie standard
@@ -84,12 +84,11 @@ int print_string(va_list args)
 	if (s == NULL)
 		s = "(null)";
 
-	while (*s)
+	while (*s != '\0')
 	{
 		count += _putchar(*s++);
 	}
-
-	return (count);
+    return (count);
 }
 /** 
 * print_percent - imprime %
@@ -99,7 +98,7 @@ int print_string(va_list args)
 int print_percent(va_list args)
 {
 	(void)args;
-	return (_putchar('%'));
+	return ('%');
 }
 /**
 *print_char - imprime un caractère sur la sortie standard.
@@ -109,6 +108,5 @@ int print_percent(va_list args)
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
-
-	return (_putchar(c));
+    return (c);
 }
