@@ -27,14 +27,11 @@ int print_int(va_list args)
 
 int print_number(unsigned int num)
 {
-	int count = 0;
+    int count = 0;
 
-	if (num / 10)
-		count += print_number(num / 10);
-	
-    return (count + _putchar(num % 10 + '0'));
-	
+    if (num / 10)
+        count += print_number(num / 10);
+
     count += _putchar(num % 10 + '0');
-
-	return (count);
+    return (count);
 }

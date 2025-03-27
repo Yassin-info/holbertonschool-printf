@@ -11,7 +11,7 @@ int _printf(const char *format, ...)
 {
     
     int count = 0;
-    const char *c = NULL;
+    const char *c = format;
     va_list args;
 
     format_specifier_t specifiers[] = {
@@ -23,7 +23,10 @@ int _printf(const char *format, ...)
 		{'\0', NULL}
 	};
 
-	while (*c != '\0')
+	if (format == NULL)
+    return (-1);
+
+    while (*c != '\0')
     {
         if (format == NULL)
         return (-1);
@@ -44,7 +47,6 @@ int _printf(const char *format, ...)
 		{
 			count += _putchar(*c);
 		}
-        c++;
     }
 	va_end(args);
 	return (count);
