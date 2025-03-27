@@ -9,12 +9,11 @@
 */
 int _printf(const char *format, ...)
 {
-    
-    va_list args;
+	va_list args;
 	int count = 0;
-    const char *c;
+	const char *c;
 
-    format_specifier_t specifiers[] = {
+	format_specifier_t specifiers[] = {
 		{'c', print_char},
 		{'s', print_string},
 		{'%', print_percent},
@@ -24,30 +23,30 @@ int _printf(const char *format, ...)
 	};
 
 	if (format == NULL)
-    return (-1);
+	return (-1);
 
-    va_start(args, format);
+	va_start(args, format);
 
-    for (c = format; *c != '\0'; c++)
-    {
+	for (c = format; *c != '\0'; c++)
+	{
 
-        if (*c == '%')
-        {
-            c++;
-            if (*c == '\0')
-            {
-                va_end(args);
-                return (-1);
-            }
-		count += handle_specifier(*c, args, specifiers);
-		}
-		else
+		if (*c == '%')
 		{
-			count += _putchar(*c);
-		}
-    }
-	va_end(args);
-	return (count);
+			c++;
+			if (*c == '\0')
+			{
+				va_end(args);
+				return (-1);
+			}
+		count += handle_specifier(*c, args, specifiers);
+	}
+	else
+	{
+		count += _putchar(*c);
+	}
+}
+va_end(args);
+return (count);
 }
 /**
 *handle_specifier - traite le specificateur de format et
@@ -60,15 +59,14 @@ int _printf(const char *format, ...)
 int handle_specifier(char specifier, va_list args, format_specifier_t specifiers[])
 {
 	int i;
-
 	for (i = 0; specifiers[i].specifier != '\0'; i++)
-    {
+	{
 		if (specifiers[i].specifier == specifier)
 		{
 			return (specifiers[i].func(args));
 		}
-    }
-	return (_putchar('%') + _putchar(specifier));
+	}
+return (_putchar('%') + _putchar(specifier));
 }
 /**
 *print_string - imprime une chaine sur la sortie standard
@@ -79,15 +77,14 @@ int print_string(va_list args)
 {
 	char *s = va_arg(args, char *);
 	int count = 0;
-
 	if (s == NULL)
-		s = "(null)";
+	s = "(null)";
 
 	while (*s)
 	{
 		count += _putchar(*s++);
-	}
-    return (count);
+		}
+		return (count);
 }
 /** 
 * print_percent - imprime %
@@ -107,5 +104,5 @@ int print_percent(va_list args)
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
-    return (_putchar(c));
+	return (_putchar(c));
 }
