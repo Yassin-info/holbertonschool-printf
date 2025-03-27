@@ -1,0 +1,52 @@
+printf 3 "March 27 2025" "1.0"
+NAME
+_printf\- produce output according to a format
+SYNPOSIS
+.nf
+_print(const char *format, ...);
+.fi
+.SH DESCRIPTION
+The _printf function produces output according to the format specified in the format string.
+The format string can contain:
+	-Normal characters that are printed as is.
+	-Conversion specifiers, which are placeholders for values passed as arguments.
+
+The following conversion specifiers are supported:
+.TP
+Prints a single character.
+.B c
+.TP
+Prints a string of character.
+.B s
+.TP
+Prints the percentage character '%'.
+.B %
+.TP
+Prints an integer value in decimal form.
+.B d, i
+
+.SH RETURN VALUE
+The _printf function returns the total number of characters printed
+(excluding the null byte used to end output to strings).
+If an error occurs, it returns -1.
+
+.SH EXAMPLES
+.nf
+
+_printf("Length:[%d, %i]\n", len, len);
+> Length: [20, 20]
+
+_printf("Negative: [%d]\n", -762534);
+> Negative: [-762534]
+
+_printf("Character: [%c]\n", 'H');
+> Character: [H]
+
+_printf("String:[%s]\n", "I am a string !");
+> String:[I am a string !]
+
+_printf("Percent:[%%]\n");
+> Percent:[%]
+
+Author :
+Yassin Zaccaria
