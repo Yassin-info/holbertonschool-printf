@@ -20,7 +20,7 @@ int print_char(va_list args);
 int print_percent(va_list args);
 int print_int(va_list args);
 int print_number(unsigned int num);
-int handle_specifier(const char specifier, va_list args, 
+int handle_specifier(const char specifier, va_list args,
 format_specifier_t specifiers[]);
 
 #endif /* MAIN_H */
