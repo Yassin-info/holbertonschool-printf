@@ -59,7 +59,7 @@ return (count);
 * Return: nombre de caractere imprimer pour le specificateur
 */
 
-int handle_specifier(char specifier, va_list args, 
+int handle_specifier(char specifier, va_list args,
 format_specifier_t specifiers[])
 {
 	int i;

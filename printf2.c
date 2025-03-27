@@ -23,7 +23,7 @@ int print_int(va_list args)
 
 /**
 * print_number - imprime nombre en utilisant recursion
-* @num: nombre a imprimer 
+* @num: nombre a imprimer
 * Return: nombre de chiffre a imprimer
 */
 
