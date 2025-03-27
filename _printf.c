@@ -69,7 +69,7 @@ int handle_specifier(char specifier, va_list args, format_specifier_t specifiers
 		}
     i++;
     }
-	return ('%');
+	return (_putchar('%') + _putchar(specifier));
 }
 /**
 *print_string - imprime une chaine sur la sortie standard
@@ -98,7 +98,7 @@ int print_string(va_list args)
 int print_percent(va_list args)
 {
 	(void)args;
-	return ('%');
+	return (_putchar('%'));
 }
 /**
 *print_char - imprime un caractère sur la sortie standard.
@@ -108,5 +108,5 @@ int print_percent(va_list args)
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
-    return (c);
+    return (_putchar(c));
 }
