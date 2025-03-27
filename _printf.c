@@ -7,6 +7,7 @@
 * @...: les valeurs a formater et a imprimer
 * Return: nombre de caracteres a imprimer 
 */
+
 int _printf(const char *format, ...)
 {
 	va_list args;
@@ -48,6 +49,7 @@ int _printf(const char *format, ...)
 va_end(args);
 return (count);
 }
+
 /**
 *handle_specifier - traite le specificateur de format et
 *					apelle la foction approprier
@@ -56,6 +58,7 @@ return (count);
 * @specifiers: tableau des specificateurs
 * Return: nombre de caractere imprimer pour le specificateur
 */
+
 int handle_specifier(char specifier, va_list args, format_specifier_t specifiers[])
 {
 	int i;
@@ -68,11 +71,13 @@ int handle_specifier(char specifier, va_list args, format_specifier_t specifiers
 	}
 return (_putchar('%') + _putchar(specifier));
 }
+
 /**
 *print_string - imprime une chaine sur la sortie standard
 * @args: chaine a imprimer
 * Return: nombre de caractere a imprimer
 */
+
 int print_string(va_list args)
 {
 	char *s = va_arg(args, char *);
@@ -86,21 +91,25 @@ int print_string(va_list args)
 		}
 		return (count);
 }
-/** 
+
+/**
 * print_percent - imprime %
 * @args: liste arguments
 * Return: toujours 1 (succes)
 */
+
 int print_percent(va_list args)
 {
 	(void)args;
 	return (_putchar('%'));
 }
+
 /**
 *print_char - imprime un caractère sur la sortie standard.
 * @args: Liste d'arguments contenant le caractère à imprimer.
 * Return: toujours 1 (succes).
 */
+
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
