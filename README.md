@@ -184,5 +184,5 @@ Flowchart :
 ![image](https://github.com/user-attachments/assets/98750bbb-6083-4ad5-a5b3-c47f6989395f)
 
 Author :
-#https://github.com/zoulouhh
-#https://github.com/Yassin-info
+@yacin https://github.com/zoulouhh
+https://github.com/Yassin-info
