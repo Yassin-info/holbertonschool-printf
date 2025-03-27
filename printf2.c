@@ -14,7 +14,7 @@ int print_int(va_list args)
 	{
 		count += _putchar('-');
 		n = -n;
-	}
+    }    
 	count += print_number(n);
 
 	return (count);
@@ -31,7 +31,8 @@ int print_number(unsigned int num)
 
     if (num / 10)
         count += print_number(num / 10);
-
+        return (count + _putchar(num % 10 + '0'));
+    
     count += _putchar(num % 10 + '0');
     return (count);
 }

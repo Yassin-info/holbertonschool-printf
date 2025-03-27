@@ -10,9 +10,9 @@
 int _printf(const char *format, ...)
 {
     
-    int count = 0;
-    const char *c = format;
     va_list args;
+	int count = 0;
+    const char *c;
 
     format_specifier_t specifiers[] = {
 		{'c', print_char},
@@ -26,12 +26,10 @@ int _printf(const char *format, ...)
 	if (format == NULL)
     return (-1);
 
-    while (*c != '\0')
-    {
-        if (format == NULL)
-        return (-1);
+    va_start(args, format);
 
-        va_start(args, format);
+    for (c = format; *c != '\0'; c++)
+    {
 
         if (*c == '%')
         {
@@ -61,15 +59,14 @@ int _printf(const char *format, ...)
 */
 int handle_specifier(char specifier, va_list args, format_specifier_t specifiers[])
 {
-	int i = 0;
+	int i;
 
-	while (specifiers[i].specifier != '\0')
+	for (i = 0; specifiers[i].specifier != '\0'; i++)
     {
 		if (specifiers[i].specifier == specifier)
 		{
 			return (specifiers[i].func(args));
 		}
-    i++;
     }
 	return (_putchar('%') + _putchar(specifier));
 }
@@ -86,7 +83,7 @@ int print_string(va_list args)
 	if (s == NULL)
 		s = "(null)";
 
-	while (*s != '\0')
+	while (*s)
 	{
 		count += _putchar(*s++);
 	}
