@@ -5,33 +5,32 @@ SYNPOSIS
 .nf
 _print(const char *format, ...);
 .fi
-.SH DESCRIPTION
+DESCRIPTION
 The _printf function produces output according to the format specified in the format string.
 The format string can contain:
 	-Normal characters that are printed as is.
 	-Conversion specifiers, which are placeholders for values passed as arguments.
 
 The following conversion specifiers are supported:
-.TP
-Prints a single character.
+
+Prints a single character :
 .B c
-.TP
-Prints a string of character.
+
+Prints a string of character : 
 .B s
-.TP
-Prints the percentage character '%'.
+
+Prints the percentage character '%' :
 .B %
-.TP
-Prints an integer value in decimal form.
+
+Prints an integer value in decimal form :
 .B d, i
 
-.SH RETURN VALUE
+RETURN VALUE
 The _printf function returns the total number of characters printed
 (excluding the null byte used to end output to strings).
 If an error occurs, it returns -1.
 
-.SH EXAMPLES
-.nf
+EXAMPLES
 
 _printf("Length:[%d, %i]\n", len, len);
 > Length: [20, 20]
