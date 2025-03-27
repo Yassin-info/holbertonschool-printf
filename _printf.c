@@ -5,7 +5,7 @@
 *			specificateur de formats specifiques
 * @format: la chaine de caractere conteant les caracteres et specificateurs
 * @...: les valeurs a formater et a imprimer
-* Return: nombre de caracteres a imprimer 
+* Return: nombre de caracteres a imprimer
 */
 
 int _printf(const char *format, ...)
@@ -59,9 +59,11 @@ return (count);
 * Return: nombre de caractere imprimer pour le specificateur
 */
 
-int handle_specifier(char specifier, va_list args, format_specifier_t specifiers[])
+int handle_specifier(char specifier, va_list args, 
+format_specifier_t specifiers[])
 {
 	int i;
+
 	for (i = 0; specifiers[i].specifier != '\0'; i++)
 	{
 		if (specifiers[i].specifier == specifier)
@@ -82,13 +84,14 @@ int print_string(va_list args)
 {
 	char *s = va_arg(args, char *);
 	int count = 0;
+
 	if (s == NULL)
 	s = "(null)";
 
 	while (*s)
 	{
 		count += _putchar(*s++);
-		}
+	}
 		return (count);
 }
 
@@ -113,5 +116,6 @@ int print_percent(va_list args)
 int print_char(va_list args)
 {
 	char c = va_arg(args, int);
+
 	return (_putchar(c));
 }
