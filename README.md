@@ -181,7 +181,7 @@ Output :
 
 Flowchart :
 
-![image](https://github.com/user-attachments/assets/98750bbb-6083-4ad5-a5b3-c47f6989395f)
+![image](https://github.com/user-attachments/assets/b4cb7732-a54d-4c17-b8b0-f594164ae7f8)
 
 Author :
 https://github.com/zoulouhh
