@@ -8,6 +8,10 @@ Printf
 Overview
 This project implements a custom version of the printf function in C, named _printf. It is designed to handle specific format specifiers and is developed for use in environments where the standard library is not available or for specific needs.
 
+Requirements :
+compiled on Ubuntu 20.04
+betty
+
 Features
 Supported Format Specifiers:
 
